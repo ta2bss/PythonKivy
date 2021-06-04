@@ -5,6 +5,7 @@ Code of How to create countdown using label only
 # Program to Show how to create a switch
 # import kivy module
 import kivy
+from playsound import playsound
 
 # base Class of your App inherits from the App class.
 # app:always refers to the instance of your application
@@ -29,7 +30,7 @@ from kivy.properties import StringProperty, NumericProperty
 class Clock(Label):
     # Set the numeric property
     # i.e set the counter number you can change it accoedingly
-    a = NumericProperty(10)  # seconds
+    a = NumericProperty(3)  # seconds
 
     # To start countdown
     def start(self):
@@ -38,8 +39,9 @@ class Clock(Label):
 
         # TO finish count down
         def finish_callback(animation, clock):
+
+            playsound ("bip.mp3")
             clock.text = "FINISHED"
-            clock.text = "2.Satir"
 
         self.anim.bind(on_complete=finish_callback)
         self.anim.start(self)
