@@ -1,5 +1,7 @@
 import kivy
+from kivy.base import runTouchApp
 from playsound import playsound
+from kivy.lang import Builder
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.animation import Animation
@@ -21,14 +23,14 @@ class Timer(App):
         self.clock.add_widget(MessageLine)
         inputsec=TextInput(multiline=False)
         self.clock.add_widget(inputsec)
+        Click = Button(text="Tikla")
+        self.clock.add_widget(Click)
 
-
-        clock = Clock()
-        self.clock.add_widget(clock)
-
-
-        clock.start()
+        Crono=Clock()
+        self.clock.add_widget(Crono)
+        Crono.start()
         return self.clock
+
 
 class Clock(Label):
     a = NumericProperty(3)  # seconds

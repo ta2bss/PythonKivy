@@ -7,11 +7,10 @@ runTouchApp(Builder.load_string("""
 Label:
     Button:
         text:"Okay"
-        pos: root.x, root.top -self.height
+
         
     Button:
         text:"Alp"
-        pos:root.right - self.width , root.y
         
         
 """))
