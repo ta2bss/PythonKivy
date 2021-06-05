@@ -6,11 +6,14 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 
-def mainprogram():
+def pageone():
     class FirstPage(App):
         def build(self):
             self.window1 = GridLayout()
             self.window1.cols = 1
+
+            Header = Label(text="TIMER V. 0.1", font_size="70sp")
+            self.window1.add_widget(Header)
 
             self.message = Label(text="Input Timer Seconds")
             self.window1.add_widget(self.message)
@@ -23,57 +26,57 @@ def mainprogram():
             self.window1.add_widget(self.dugme)
             return self.window1
 
-
-        def callit (self, event):
+        def callit(self, event):
             try:
                 global a
                 a = (self.entry.text)
-                program()
+                pagetwo()
             except:
                 self.message.text = "THIS IS NOT A NUMBER " + self.entry.text + " !!!"
+
     if __name__ == "__main__":
         FirstPage().run()
 
-def program():
-    class Clock(Label):
-       Seconds = NumericProperty(a)
 
+def pagetwo():
+    class Cronoanimation(Label):
+        Seconds = NumericProperty(a)
 
-       def start(self):
+        def start(self):
+            Animation.cancel_all(self)
+            self.anim = Animation(Seconds=0, duration=self.Seconds)
 
-          self.anim = Animation(Seconds=0, duration=self.Seconds)
+            def finish_callback(animation, window2):
+                window2.text = "FINISHED"
 
-          def finish_callback(animation, clock):
-             clock.text = "FINISHED"
+            self.anim.bind(on_complete=finish_callback)
+            self.anim.start(self)
 
-          self.anim.bind(on_complete=finish_callback)
-          self.anim.start(self)
-
-       def on_Seconds(self, instance, value):
-          self.text = str(round(value, 1))
+        def on_Seconds(self, instance, value):
+            self.text = str(round(value, 1))
 
     class Timer(App):
         def build(self):
-            Crono = Clock()
-            self.clock = GridLayout(cols=1)
+            cronometer = Cronoanimation()
+            self.window2 = GridLayout(cols=1)
 
             Header = Label(text="TIMER V. 0.1", font_size="70sp")
-            self.clock.add_widget(Header)
+            self.window2.add_widget(Header)
 
-            self.MessageLine = Label(text="Input Time in secs")
-            self.clock.add_widget(self.MessageLine)
+            #self.MessageLine = Label(text="Input Time in secs")
+            #self.window2.add_widget(self.MessageLine)
 
-            self.inputsec = TextInput(multiline=False)
-            self.clock.add_widget(self.inputsec)
+            #self.inputsec = TextInput(multiline=False)
+            #self.window2.add_widget(self.inputsec)
 
-            Click = Button(text="Click")
-            Click.bind(on_press=self.event)
-            self.clock.add_widget(Click)
+            #Click = Button(text="Click")
+            #Click.bind(on_press=self.event)
+            #self.window2.add_widget(Click)
 
-            self.clock.add_widget(Crono)
-            Crono.start()
+            self.window2.add_widget(cronometer)
+            cronometer.start()
 
-            return self.clock
+            return self.window2
 
         def event(self, number):
             try:
@@ -84,7 +87,8 @@ def program():
             except:
                 self.MessageLine.text = "Input a Number"
 
-
     if __name__ == "__main__":
         Timer().run()
-mainprogram()
+
+
+pageone()
