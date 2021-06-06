@@ -1,5 +1,3 @@
-import time
-
 from kivy.animation import Animation
 from kivy.properties import NumericProperty
 from kivy.app import App
@@ -15,17 +13,24 @@ def pageone():
             self.window1 = GridLayout()
             self.window1.cols = 1
             self.Header1 = Label(text="TIMER V. 0.1", font_size="70sp")
+            self.Header2 = Label(text=" " )
             self.window1.add_widget(self.Header1)
+            self.window1.add_widget(self.Header2)
 
-            self.message1 = Label(text="Input Timer Seconds")
+            self.message1 = Label(text="Input Countdown Duration in Seconds")
             self.window1.add_widget(self.message1)
             self.entry1 = TextInput(multiline=False)
             self.window1.add_widget(self.entry1)
 
-            self.message2 = Label(text="Input Pause Seconds")
+            self.message2 = Label(text="Input Interval Duration in Seconds")
             self.window1.add_widget(self.message2)
             self.entry2 = TextInput(multiline=False)
             self.window1.add_widget(self.entry2)
+
+            self.message3 = Label(text="Input Number of Sets ")
+            self.window1.add_widget(self.message3)
+            self.entry3 = TextInput(multiline=False)
+            self.window1.add_widget(self.entry3)
 
             self.butt1 = Button(text="Click here after input")
             self.butt1.bind(on_press=self.callit)
@@ -36,21 +41,19 @@ def pageone():
             try:
                 global a
                 global b
+                global c
                 a = (self.entry1.text)
                 b = (self.entry2.text)
+                c = (self.entry3.text)
                 a = int(a)
                 b = int(b)
-                self.window1.remove_widget(self.Header1)
-                self.window1.remove_widget(self.message1)
-                self.window1.remove_widget(self.entry1)
-                self.window1.remove_widget(self.message2)
-                self.window1.remove_widget(self.entry2)
-                self.window1.remove_widget(self.butt1)
+                c = int(c)
+                self.window1.clear_widgets()
                 FirstPage().stop()
                 return pagetwo()
 
             except:
-                self.message1.text = "THIS IS NOT A NUMBER "
+                self.Header2.text = "THIS IS NOT A NUMBER "
 
     if __name__ == "__main__":
         FirstPage().run()
