@@ -5,11 +5,9 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
-
-
-counter = 0
+counter = 1
 print (counter)
-
+counterstr = str (counter)
 
 def pageone():
     global counter
@@ -18,7 +16,7 @@ def pageone():
         def build(self):
             self.window1 = GridLayout()
             self.window1.cols = 1
-            self.Header1 = Label(text="TIMER V. 0.1", font_size="70sp")
+            self.Header1 = Label(text="TIMER V. 0.2", font_size="70sp")
             self.Header2 = Label(text=" " )
             self.window1.add_widget(self.Header1)
             self.window1.add_widget(self.Header2)
@@ -49,28 +47,29 @@ def pageone():
                 global b
                 global c
                 global counter
+                global cstr
                 a = (self.entry1.text)
                 b = (self.entry2.text)
                 c = (self.entry3.text)
                 a = int(a)
                 b = int(b)
                 c = int(c)
+                cstr = str(c)
 
                 self.window1.clear_widgets()
                 FirstPage().stop()
                 return pagetwo()
 
             except:
-                self.Header2.text = "THIS IS NOT A NUMBER "
+                self.Header2.text = "PLEASE INPUT ONLY NUMBERS "
 
 
     if __name__ == "__main__":
         FirstPage().run()
 
-
 def pagetwo():
     class Cronoanimation(Label):
-        if counter == 0 :
+        if counter == 1 :
             Secondsa = NumericProperty(5)
         else:
             Secondsa = NumericProperty(a)
@@ -83,11 +82,6 @@ def pagetwo():
 
                 Timer().stop()
 
-
-
-
-
-
             self.anim.bind(on_complete=finish_callback)
             self.anim.start(self)
 
@@ -98,16 +92,17 @@ def pagetwo():
         def build(self):
             cronometer = Cronoanimation()
             self.window2 = GridLayout(cols=1)
-            if counter != 0 :
+            if counter != 1 :
                 Header = Label(text="REST", font_size="70sp")
+                SetInfo= Label(text= "Set:" + counterstr + " of " +  cstr )
             else:
-                Header = Label(text="PREPARE", font_size="70sp")
+                Header = Label(text="PREPARE TO:", font_size="70sp")
+                SetInfo= Label(text= "Set:" + counterstr + " of " +  cstr )
             self.window2.add_widget(Header)
+            self.window2.add_widget(SetInfo)
             self.window2.add_widget(cronometer)
             cronometer.start()
             return self.window2
-
-
 
     if __name__ == "__main__":
         Timer().run()
@@ -136,7 +131,9 @@ def pagethree():
             Pausermeter = Pauseranimation()
             self.window3 = GridLayout(cols=1)
             Header = Label(text="WORK", font_size="70sp")
+            SetInfo= Label(text= "Set:" + counterstr + " of " +  cstr )
             self.window3.add_widget(Header)
+            self.window3.add_widget(SetInfo)
             self.window3.add_widget(Pausermeter)
             Pausermeter.start()
 
@@ -146,7 +143,9 @@ def pagethree():
         Pauser().run()
     global counter
     counter = counter + 1
-    if counter!=c:
+    global counterstr
+    counterstr = str(counter)
+    if counter!=c+1:
         print(counter)
         pagetwo()
 
