@@ -7,7 +7,11 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 
 
+
+
 def pageone():
+    global sayac
+    sayac =+ 1
     class FirstPage(App):
         def build(self):
             self.window1 = GridLayout()
@@ -68,7 +72,13 @@ def pagetwo():
             self.anim = Animation(Secondsa=0, duration=self.Secondsa)
 
             def finish_callback(animation, window2):
-                window2.text = "FINISHED"
+
+                Timer().stop()
+
+
+
+
+
 
             self.anim.bind(on_complete=finish_callback)
             self.anim.start(self)
@@ -80,14 +90,58 @@ def pagetwo():
         def build(self):
             cronometer = Cronoanimation()
             self.window2 = GridLayout(cols=1)
-            Header = Label(text="TIMER V. 0.1", font_size="70sp")
+            Header = Label(text="RUNNING", font_size="70sp")
             self.window2.add_widget(Header)
             self.window2.add_widget(cronometer)
             cronometer.start()
             return self.window2
 
+
+
     if __name__ == "__main__":
         Timer().run()
+
+    pagethree()
+
+def pagethree():
+    class Pauseranimation(Label):
+        Secondsb = NumericProperty(b)
+
+        def start(self):
+            Animation.cancel_all(self)
+            self.anim = Animation(Secondsb=0, duration=self.Secondsb)
+
+            def finish_callback(animation, window3):
+                Pauser().stop()
+
+            self.anim.bind(on_complete=finish_callback)
+            self.anim.start(self)
+
+        def on_Secondsb(self, instance, value):
+            self.text = str(round(value, 1))
+
+    class Pauser(App):
+        def build(self):
+            Pausermeter = Pauseranimation()
+            self.window3 = GridLayout(cols=1)
+            Header = Label(text="PAUSE", font_size="70sp")
+            self.window3.add_widget(Header)
+            self.window3.add_widget(Pausermeter)
+            Pausermeter.start()
+
+            return self.window3
+
+    if __name__ == "__main__":
+        Pauser().run()
+
+
+    if sayac!=5:
+        print(sayac)
+        pagetwo()
+
+    else:
+        exit()
+
 
 
 pageone()
