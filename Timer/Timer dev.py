@@ -7,11 +7,13 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 
 
+counter = 0
+print (counter)
 
 
 def pageone():
-    global sayac
-    sayac =+ 1
+    global counter
+
     class FirstPage(App):
         def build(self):
             self.window1 = GridLayout()
@@ -21,12 +23,12 @@ def pageone():
             self.window1.add_widget(self.Header1)
             self.window1.add_widget(self.Header2)
 
-            self.message1 = Label(text="Input Countdown Duration in Seconds")
+            self.message1 = Label(text="Input Interval Duration in Seconds")
             self.window1.add_widget(self.message1)
             self.entry1 = TextInput(multiline=False)
             self.window1.add_widget(self.entry1)
 
-            self.message2 = Label(text="Input Interval Duration in Seconds")
+            self.message2 = Label(text="Input Running Duration in Seconds")
             self.window1.add_widget(self.message2)
             self.entry2 = TextInput(multiline=False)
             self.window1.add_widget(self.entry2)
@@ -46,12 +48,14 @@ def pageone():
                 global a
                 global b
                 global c
+                global counter
                 a = (self.entry1.text)
                 b = (self.entry2.text)
                 c = (self.entry3.text)
                 a = int(a)
                 b = int(b)
                 c = int(c)
+
                 self.window1.clear_widgets()
                 FirstPage().stop()
                 return pagetwo()
@@ -59,13 +63,17 @@ def pageone():
             except:
                 self.Header2.text = "THIS IS NOT A NUMBER "
 
+
     if __name__ == "__main__":
         FirstPage().run()
 
 
 def pagetwo():
     class Cronoanimation(Label):
-        Secondsa = NumericProperty(a)
+        if counter == 0 :
+            Secondsa = NumericProperty(5)
+        else:
+            Secondsa = NumericProperty(a)
 
         def start(self):
             Animation.cancel_all(self)
@@ -90,7 +98,10 @@ def pagetwo():
         def build(self):
             cronometer = Cronoanimation()
             self.window2 = GridLayout(cols=1)
-            Header = Label(text="RUNNING", font_size="70sp")
+            if counter != 0 :
+                Header = Label(text="REST", font_size="70sp")
+            else:
+                Header = Label(text="PREPARE", font_size="70sp")
             self.window2.add_widget(Header)
             self.window2.add_widget(cronometer)
             cronometer.start()
@@ -124,7 +135,7 @@ def pagethree():
         def build(self):
             Pausermeter = Pauseranimation()
             self.window3 = GridLayout(cols=1)
-            Header = Label(text="PAUSE", font_size="70sp")
+            Header = Label(text="WORK", font_size="70sp")
             self.window3.add_widget(Header)
             self.window3.add_widget(Pausermeter)
             Pausermeter.start()
@@ -133,15 +144,12 @@ def pagethree():
 
     if __name__ == "__main__":
         Pauser().run()
-
-
-    if sayac!=5:
-        print(sayac)
+    global counter
+    counter = counter + 1
+    if counter!=c:
+        print(counter)
         pagetwo()
 
     else:
         exit()
-
-
-
 pageone()
