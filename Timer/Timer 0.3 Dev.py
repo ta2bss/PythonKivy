@@ -6,6 +6,8 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.floatlayout import FloatLayout
 
 counter = 1
 counterstr = str(counter)
@@ -18,33 +20,39 @@ def pageone():
         def build(self):
             self.window1 = GridLayout()
             self.window1.cols = 1
-            self.Header1 = Label(text="TIMER V. 0.2", font_size="70sp")
+            self.Header1 = Label(text="a Very Simple Timer", font_size="70sp")
             self.Header2 = Label(text=" ")
-            self.window1.add_widget(self.Header1)
-            self.window1.add_widget(self.Header2)
+
 
             self.message1 = Label(text="Input Rest Period in Seconds")
-            self.window1.add_widget(self.message1)
+
             self.entry1 = TextInput(multiline=False)
-            self.window1.add_widget(self.entry1)
 
             self.message2 = Label(text="Input Running Time in Seconds")
-            self.window1.add_widget(self.message2)
+
             self.entry2 = TextInput(multiline=False)
-            self.window1.add_widget(self.entry2)
 
             self.message3 = Label(text="Input Number of Sets ")
-            self.window1.add_widget(self.message3)
+
             self.entry3 = TextInput(multiline=False)
-            self.window1.add_widget(self.entry3)
 
             self.message4 = Label(text="Input Preparation Time in Seconds (Default : 5 Secs) ")
-            self.window1.add_widget(self.message4)
+
             self.entry4 = TextInput(multiline=False)
-            self.window1.add_widget(self.entry4)
 
             self.butt1 = Button(text="Click here after input")
             self.butt1.bind(on_press=self.callit)
+
+            self.window1.add_widget(self.Header1)
+            self.window1.add_widget(self.Header2)
+            self.window1.add_widget(self.message1)
+            self.window1.add_widget(self.entry1)
+            self.window1.add_widget(self.message2)
+            self.window1.add_widget(self.entry2)
+            self.window1.add_widget(self.message3)
+            self.window1.add_widget(self.entry3)
+            self.window1.add_widget(self.message4)
+            self.window1.add_widget(self.entry4)
             self.window1.add_widget(self.butt1)
             return self.window1
 
@@ -60,8 +68,6 @@ def pageone():
                 d = int(d)
                 dstr = str(d)
 
-
-
             try:
                 global a
                 global b
@@ -76,7 +82,6 @@ def pageone():
                 b = (self.entry2.text)
                 c = (self.entry3.text)
 
-
                 a = int(a)
                 b = int(b)
                 c = int(c)
@@ -84,7 +89,6 @@ def pageone():
                 astr = str(a)
                 bstr = str(b)
                 cstr = str(c)
-
 
                 self.window1.clear_widgets()
                 FirstPage().stop()
