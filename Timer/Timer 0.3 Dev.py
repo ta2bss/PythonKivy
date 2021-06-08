@@ -19,12 +19,16 @@ def pageone():
     class FirstPage(App):
         def build(self):
             self.window1 = BoxLayout(orientation="vertical")
-            self.Header1 = Label(text="a Very Simple Timer", font_size="70sp")
+            self.horizontalbox1 = BoxLayout(orientation="horizontal")
+            self.horizontalbox2 = BoxLayout(orientation="horizontal")
+
+
+            self.Header1 = Label(text="a Very Simple Timer", font_size="40sp")
             self.Header2 = Label(text=" ")
-            self.message1 = Label(text="Input Rest Period in Seconds", size_hint = (.3,1))
-            self.entry1 = TextInput(multiline=False,size_hint = (.3,1))
-            self.message2 = Label(text="Input Running Time in Seconds")
-            self.entry2 = TextInput(multiline=False)
+            self.message1 = Label(text="Input Rest Period in Seconds", size_hint = (.8,1))
+            self.entry1 = TextInput(multiline=False,size_hint = (.2,1))
+            self.message2 = Label(text="Input Running Time in Seconds", size_hint = (.8,1))
+            self.entry2 = TextInput(multiline=False, size_hint = (.2,1))
             self.message3 = Label(text="Input Number of Sets ")
             self.entry3 = TextInput(multiline=False)
             self.message4 = Label(text="Input Preparation Time in Seconds (Default : 5 Secs) ")
@@ -34,10 +38,14 @@ def pageone():
 
             self.window1.add_widget(self.Header1)
             self.window1.add_widget(self.Header2)
-            self.window1.add_widget(self.message1)
-            self.window1.add_widget(self.entry1)
-            self.window1.add_widget(self.message2)
-            self.window1.add_widget(self.entry2)
+            self.horizontalbox1.add_widget(self.message2)
+            self.horizontalbox1.add_widget(self.entry2)
+            self.horizontalbox2.add_widget(self.message1)
+            self.horizontalbox2.add_widget(self.entry1)
+
+            self.window1.add_widget(self.horizontalbox1)
+            self.window1.add_widget(self.horizontalbox2)
+
             self.window1.add_widget(self.message3)
             self.window1.add_widget(self.entry3)
             self.window1.add_widget(self.message4)
