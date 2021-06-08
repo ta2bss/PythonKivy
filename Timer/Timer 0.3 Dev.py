@@ -24,15 +24,15 @@ def pageone():
 
             self.Header1 = Label(text="Very Simple Timer", font_size="40sp")
             self.Header2 = Label(text=" ")
-            self.message1 = Label(text="Rest in Seconds", font_size="20sp", size_hint=(.8, 1))
-            self.entry1 = TextInput(multiline=False, font_size="30sp", size_hint=(.2, 1))
-            self.message2 = Label(text="Work in Seconds", font_size="20sp", size_hint=(.8, 1))
-            self.entry2 = TextInput(multiline=False, font_size="30sp", size_hint=(.2, 1))
-            self.message3 = Label(text="Number of Sets ", font_size="20sp", size_hint=(.8, 1))
-            self.entry3 = TextInput(multiline=False, font_size="30sp", size_hint=(.2, 1))
-            self.message4 = Label(text="Initial in Seconds -Def.(5)", font_size="20sp", size_hint=(.8, 1))
-            self.entry4 = TextInput(multiline=False, font_size="30sp", size_hint=(.2, 1))
-            self.butt1 = Button(text="RUN", font_size="40sp")
+            self.message1 = Label(text="Rest in Seconds", font_size="20sp", size_hint=(.7, 1))
+            self.entry1 = TextInput(multiline=False, font_size="30sp", size_hint=(.3, .9),halign='center')
+            self.message2 = Label(text="Work in Seconds", font_size="20sp", size_hint=(.7, 1))
+            self.entry2 = TextInput(multiline=False, font_size="30sp", size_hint=(.3, .9),halign='center')
+            self.message3 = Label(text="Number of Sets ", font_size="20sp", size_hint=(.7, 1))
+            self.entry3 = TextInput(multiline=False, font_size="30sp", size_hint=(.3, .9),halign='center')
+            self.message4 = Label(text="Initial in Seconds -Def.(5)", font_size="20sp", size_hint=(.7, 1))
+            self.entry4 = TextInput(multiline=False, font_size="30sp", size_hint=(.3, .9),halign='center')
+            self.butt1 = Button(text="RUN", font_size="40sp", background_color = [0/255,35/255,255/255,1])
             self.butt1.bind(on_press=self.callit)
 
             self.window1.add_widget(self.Header1)
@@ -229,5 +229,6 @@ def pagethree():
         pagetwo()
     else:
         finished().run()
+
 
 pageone()
