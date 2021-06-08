@@ -22,24 +22,14 @@ def pageone():
             self.window1.cols = 1
             self.Header1 = Label(text="a Very Simple Timer", font_size="70sp")
             self.Header2 = Label(text=" ")
-
-
             self.message1 = Label(text="Input Rest Period in Seconds")
-
             self.entry1 = TextInput(multiline=False)
-
             self.message2 = Label(text="Input Running Time in Seconds")
-
             self.entry2 = TextInput(multiline=False)
-
             self.message3 = Label(text="Input Number of Sets ")
-
             self.entry3 = TextInput(multiline=False)
-
             self.message4 = Label(text="Input Preparation Time in Seconds (Default : 5 Secs) ")
-
             self.entry4 = TextInput(multiline=False)
-
             self.butt1 = Button(text="Click here after input")
             self.butt1.bind(on_press=self.callit)
 
@@ -54,6 +44,8 @@ def pageone():
             self.window1.add_widget(self.message4)
             self.window1.add_widget(self.entry4)
             self.window1.add_widget(self.butt1)
+
+
             return self.window1
 
         def callit(self, event):
