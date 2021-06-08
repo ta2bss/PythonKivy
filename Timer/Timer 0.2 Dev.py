@@ -1,3 +1,4 @@
+import time
 from kivy.animation import Animation
 from kivy.properties import NumericProperty
 from kivy.app import App
@@ -10,7 +11,6 @@ counterstr = str (counter)
 
 def pageone():
     global counter
-
     class FirstPage(App):
         def build(self):
             self.window1 = GridLayout()
@@ -69,7 +69,7 @@ def pageone():
 def pagetwo():
     class Cronoanimation(Label):
         if counter == 1 :
-            Secondsa = NumericProperty(5)
+            Secondsa = NumericProperty(2)
         else:
             Secondsa = NumericProperty(a)
 
@@ -138,6 +138,54 @@ def pagethree():
 
             return self.window3
 
+    class finished(App):
+        def build(self):
+            self.window4 = GridLayout()
+            self.window4.clear_widgets()
+            self.window4.cols = 1
+            self.Header1 = Label(text="FINISHED", font_size="70sp")
+            self.Header2 = Label(text=" ")
+            self.window4.add_widget(self.Header1)
+            self.window4.add_widget(self.Header2)
+
+            self.butt1 = Button(text="Main")
+            self.butt1.bind(on_press=self.tomainscreen)
+            self.window4.add_widget(self.butt1)
+
+            self.butt2 = Button(text="Restart")
+            self.butt2.bind(on_press=self.torepeate)
+            self.window4.add_widget(self.butt2)
+
+            self.butt3 = Button(text="Exit")
+            self.butt3.bind(on_press=self.toexit)
+            self.window4.add_widget(self.butt3)
+
+            return self.window4
+
+
+        def tomainscreen(self, event):
+            self.window4.clear_widgets()
+            finished().stop()
+            global counter
+            global counterstr
+            counter = 1
+            counterstr = str(counter)
+            pageone()
+
+        def torepeate(self, event):
+            self.window4.clear_widgets()
+            finished().stop()
+            global counter
+            global counterstr
+            counter = 1
+            counterstr = str(counter)
+            pagetwo()
+
+        def toexit(self, event):
+            self.window4.clear_widgets()
+            finished().stop()
+            exit()
+
     if __name__ == "__main__":
         Pauser().run()
     global counter
@@ -146,7 +194,6 @@ def pagethree():
     counterstr = str(counter)
     if counter!=c+1:
         pagetwo()
-
     else:
-        exit()
+        finished().run()
 pageone()
