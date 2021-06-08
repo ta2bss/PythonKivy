@@ -1,4 +1,3 @@
-import time
 from kivy.animation import Animation
 from kivy.properties import NumericProperty
 from kivy.app import App
@@ -7,7 +6,6 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.floatlayout import FloatLayout
 
 counter = 1
 counterstr = str(counter)
@@ -21,19 +19,20 @@ def pageone():
             self.window1 = BoxLayout(orientation="vertical")
             self.horizontalbox1 = BoxLayout(orientation="horizontal")
             self.horizontalbox2 = BoxLayout(orientation="horizontal")
+            self.horizontalbox3 = BoxLayout(orientation="horizontal")
+            self.horizontalbox4 = BoxLayout(orientation="horizontal")
 
-
-            self.Header1 = Label(text="a Very Simple Timer", font_size="40sp")
+            self.Header1 = Label(text="Very Simple Timer", font_size="40sp")
             self.Header2 = Label(text=" ")
-            self.message1 = Label(text="Input Rest Period in Seconds", size_hint = (.8,1))
-            self.entry1 = TextInput(multiline=False,size_hint = (.2,1))
-            self.message2 = Label(text="Input Running Time in Seconds", size_hint = (.8,1))
-            self.entry2 = TextInput(multiline=False, size_hint = (.2,1))
-            self.message3 = Label(text="Input Number of Sets ")
-            self.entry3 = TextInput(multiline=False)
-            self.message4 = Label(text="Input Preparation Time in Seconds (Default : 5 Secs) ")
-            self.entry4 = TextInput(multiline=False)
-            self.butt1 = Button(text="Click here after input")
+            self.message1 = Label(text="Rest in Seconds", font_size="20sp", size_hint=(.8, 1))
+            self.entry1 = TextInput(multiline=False, font_size="30sp", size_hint=(.2, 1))
+            self.message2 = Label(text="Work in Seconds", font_size="20sp", size_hint=(.8, 1))
+            self.entry2 = TextInput(multiline=False, font_size="30sp", size_hint=(.2, 1))
+            self.message3 = Label(text="Number of Sets ", font_size="20sp", size_hint=(.8, 1))
+            self.entry3 = TextInput(multiline=False, font_size="30sp", size_hint=(.2, 1))
+            self.message4 = Label(text="Initial in Seconds -Def.(5)", font_size="20sp", size_hint=(.8, 1))
+            self.entry4 = TextInput(multiline=False, font_size="30sp", size_hint=(.2, 1))
+            self.butt1 = Button(text="RUN", font_size="40sp")
             self.butt1.bind(on_press=self.callit)
 
             self.window1.add_widget(self.Header1)
@@ -42,16 +41,17 @@ def pageone():
             self.horizontalbox1.add_widget(self.entry2)
             self.horizontalbox2.add_widget(self.message1)
             self.horizontalbox2.add_widget(self.entry1)
+            self.horizontalbox3.add_widget(self.message3)
+            self.horizontalbox3.add_widget(self.entry3)
+            self.horizontalbox4.add_widget(self.message4)
+            self.horizontalbox4.add_widget(self.entry4)
 
             self.window1.add_widget(self.horizontalbox1)
             self.window1.add_widget(self.horizontalbox2)
+            self.window1.add_widget(self.horizontalbox3)
+            self.window1.add_widget(self.horizontalbox4)
 
-            self.window1.add_widget(self.message3)
-            self.window1.add_widget(self.entry3)
-            self.window1.add_widget(self.message4)
-            self.window1.add_widget(self.entry4)
             self.window1.add_widget(self.butt1)
-
 
             return self.window1
 
@@ -128,7 +128,7 @@ def pagetwo():
                 Header = Label(text="REST", font_size="70sp")
                 SetInfo = Label(text="Set:" + counterstr + " of " + cstr)
             else:
-                Header = Label(text="PREPARE TO:", font_size="70sp")
+                Header = Label(text="GET SET", font_size="70sp")
                 SetInfo = Label(text="Set:" + counterstr + " of " + cstr)
             self.window2.add_widget(Header)
             self.window2.add_widget(SetInfo)
@@ -229,6 +229,5 @@ def pagethree():
         pagetwo()
     else:
         finished().run()
-
 
 pageone()
