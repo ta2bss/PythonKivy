@@ -18,12 +18,11 @@ def pageone():
 
     class FirstPage(App):
         def build(self):
-            self.window1 = GridLayout()
-            self.window1.cols = 1
+            self.window1 = BoxLayout(orientation="vertical")
             self.Header1 = Label(text="a Very Simple Timer", font_size="70sp")
             self.Header2 = Label(text=" ")
-            self.message1 = Label(text="Input Rest Period in Seconds")
-            self.entry1 = TextInput(multiline=False)
+            self.message1 = Label(text="Input Rest Period in Seconds", size_hint = (.3,1))
+            self.entry1 = TextInput(multiline=False,size_hint = (.3,1))
             self.message2 = Label(text="Input Running Time in Seconds")
             self.entry2 = TextInput(multiline=False)
             self.message3 = Label(text="Input Number of Sets ")
