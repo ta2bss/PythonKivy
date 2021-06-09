@@ -6,6 +6,9 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.boxlayout import BoxLayout
+from kivy.properties import ListProperty
+from kivy.lang import Builder
+from kivy.core.window import Window
 
 counter = 1
 counterstr = str(counter)
@@ -125,10 +128,10 @@ def pagetwo():
             cronometer = Cronoanimation()
             self.window2 = GridLayout(cols=1)
             if counter != 1:
-                Header = Label(text="REST", font_size="70sp")
+                Header = Label(text="REST", font_size="70sp",color=[1,1,0,1])
                 SetInfo = Label(text="Set:" + counterstr + " of " + cstr)
             else:
-                Header = Label(text="GET SET", font_size="70sp")
+                Header = Label(text="GET SET", font_size="70sp",color=[1,1,0,1])
                 SetInfo = Label(text="Set:" + counterstr + " of " + cstr)
             self.window2.add_widget(Header)
             self.window2.add_widget(SetInfo)
@@ -163,7 +166,7 @@ def pagethree():
         def build(self):
             Pausermeter = Pauseranimation()
             self.window3 = GridLayout(cols=1)
-            Header = Label(text="WORK", font_size="70sp")
+            Header = Label(text="WORK", font_size="70sp",color= [0,0,1,1])
             SetInfo = Label(text="Set:" + counterstr + " of " + cstr)
             self.window3.add_widget(Header)
             self.window3.add_widget(SetInfo)
@@ -177,7 +180,8 @@ def pagethree():
             self.window4 = GridLayout()
             self.window4.clear_widgets()
             self.window4.cols = 1
-            self.Header1 = Label(text="FINISHED", font_size="70sp")
+
+            self.Header1 = Label(text="FINISHED", font_size="70sp", color= [1,0,0,1])
             self.Header2 = Label(text=" ")
             self.window4.add_widget(self.Header1)
             self.window4.add_widget(self.Header2)
